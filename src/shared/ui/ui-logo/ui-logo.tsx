@@ -1,8 +1,8 @@
-import { Pacifico } from 'next/font/google';
+import { Rubik_Wet_Paint } from 'next/font/google';
 import type { FC } from 'react';
 import { cn } from '@/shared/utils';
 
-const pacifico = Pacifico({
+const rubikWetPaint = Rubik_Wet_Paint({
   weight: '400',
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
@@ -14,8 +14,8 @@ interface Props {
 
 export const UiLogo: FC<Props> = ({ className }) => {
   return (
-    <div className={cn(pacifico.className, className)}>
-      <div className='text-ctp-text-500 text-center text-2xl'>Позор Дом</div>
+    <div className={cn(rubikWetPaint.className, className)}>
+      <div className='text-center text-3xl text-rose-500'>Позор Дом</div>
     </div>
   );
 };

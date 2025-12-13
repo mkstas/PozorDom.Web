@@ -6,5 +6,14 @@ interface Props extends PropsWithChildren {
 }
 
 export const UiSheet: FC<Props> = ({ children, className }) => {
-  return <div className={cn('bg-ctp-crust-500 rounded-2xl p-3', className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        'rounded-2xl border border-white/10 bg-gray-800/70 shadow-xl backdrop-blur-xl',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 };

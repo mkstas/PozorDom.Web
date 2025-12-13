@@ -3,12 +3,12 @@ import { cn } from '@/shared/utils';
 
 interface Props extends PropsWithChildren {
   className?: string;
-  onSubmit?: () => void;
+  onSubmit?: (e: React.FormEvent) => void;
 }
 
 export const UiForm: FC<Props> = ({ children, className, onSubmit }) => {
   return (
-    <form onSubmit={onSubmit} className={cn('grid gap-y-3', className)}>
+    <form onSubmit={onSubmit} className={cn(className)}>
       {children}
     </form>
   );

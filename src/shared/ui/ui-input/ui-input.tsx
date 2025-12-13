@@ -13,7 +13,7 @@ const UiInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   return (
     <div className='grid'>
       {label && (
-        <label htmlFor={id} className='text-ctp-subtext1-500 pb-1 text-sm font-medium'>
+        <label htmlFor={id} className='pb-1 text-sm font-medium'>
           {label}
         </label>
       )}
@@ -21,12 +21,12 @@ const UiInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
         ref={ref}
         id={id}
         className={cn(
-          'bg-ctp-base-500 outline-ctp-blue-500 text-ctp-text-500 placeholder:text-ctp-subtext3-500 input-no-autofill-bg rounded-xl px-4 py-2 outline-0 focus:outline-1',
+          'rounded-xl bg-gray-700/50 px-4 py-2 text-white outline-0 placeholder:text-gray-500 focus:outline-1 focus:outline-amber-500',
           className,
         )}
         {...updatedProps}
       />
-      {error && <span className='text-ctp-red-500 mt-1 text-sm font-medium'>{error}</span>}
+      {error && <span className='mt-1 text-sm font-medium text-rose-500'>{error}</span>}
     </div>
   );
 });
