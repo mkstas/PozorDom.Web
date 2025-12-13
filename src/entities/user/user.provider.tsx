@@ -1,53 +1,33 @@
 'use client';
 
-import { redirect } from 'next/navigation';
 import {
   createContext,
+  type Dispatch,
   type FC,
   type PropsWithChildren,
+  type SetStateAction,
   useContext,
-  useEffect,
   useState,
 } from 'react';
-import { ROUTES } from '@/shared/config';
-import { userService } from './user.service';
 
 interface IUserContext {
-  isLoggedIn: boolean;
-  isLoading: boolean;
+  phoneNumber: string | null;
+  setPhoneNumber: Dispatch<SetStateAction<string | null>>;
 }
 
 const UserContext = createContext<IUserContext>({
-  isLoading: false,
-  isLoggedIn: false,
+  phoneNumber: null,
+  setPhoneNumber: () => {},
 });
 
 export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const res = await userService.check();
-
-      if (res.ok) {
-        setIsLoggedIn(true);
-        redirect(ROUTES.HOME);
-      }
-
-      if (res.status === 401) {
-        redirect(ROUTES.LOGIN);
-      }
-    };
-
-    checkAuth();
-  });
+  const [phoneNumber, setPhoneNumber] = useState<string | null>(null);
 
   return (
     <UserContext.Provider
       value={{
-        isLoading,
-        isLoggedIn,
+        phoneNumber,
+        setPhoneNumber,
       }}
     >
       {children}

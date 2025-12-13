@@ -19,10 +19,12 @@ export const userService = {
     });
   },
 
-  check: async () => {
+  check: async (jwtCookie: string) => {
     return await fetch(API_ROUTES.AUTH_CHECK, {
       method: 'GET',
-      credentials: 'include',
+      headers: {
+        Cookie: `very-non-secret-cookie=${jwtCookie}`,
+      },
     });
   },
 };
