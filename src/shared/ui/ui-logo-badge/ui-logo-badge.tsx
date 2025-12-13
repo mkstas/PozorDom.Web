@@ -1,6 +1,6 @@
 import { AccessibilityIcon } from 'lucide-react';
 import type { FC } from 'react';
-import { cn } from '@/shared/utils';
+import { cn } from '@/shared/ui/cn';
 
 interface Props {
   className?: string;

@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import { cn } from '@/shared/utils';
+import { cn } from '@/shared/ui/cn';
 
 interface Props extends PropsWithChildren {
   className?: string;

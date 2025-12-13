@@ -1,6 +1,6 @@
 import { Rubik_Wet_Paint } from 'next/font/google';
 import type { FC } from 'react';
-import { cn } from '@/shared/utils';
+import { cn } from '@/shared/ui/cn';
 
 const rubikWetPaint = Rubik_Wet_Paint({
   weight: '400',
