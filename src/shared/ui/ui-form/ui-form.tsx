@@ -3,12 +3,13 @@ import { cn } from '@/shared/ui/cn';
 
 interface Props extends PropsWithChildren {
   className?: string;
+  method?: string;
   onSubmit?: (e: React.FormEvent) => void;
 }
 
-export const UiForm: FC<Props> = ({ children, className, onSubmit }) => {
+export const UiForm: FC<Props> = ({ children, className, method = 'POST', onSubmit }) => {
   return (
-    <form onSubmit={onSubmit} className={cn(className)}>
+    <form method={method} onSubmit={onSubmit} className={cn(className)}>
       {children}
     </form>
   );
