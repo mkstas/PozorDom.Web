@@ -1,6 +1,11 @@
 export const ROUTES = {
   LOGIN: '/',
   HOME: '/home',
+  STORE: '/store',
+  ACCOUNT: '/account',
+  DEVICES: '/devices',
+  SINGLE_DEVICE: (id: string) => `/devices/${id}`,
+  SHEDULE: '/shedule',
 };
 
 export const API_PREFIX = 'http://localhost/api/v1';
