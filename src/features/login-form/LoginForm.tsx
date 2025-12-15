@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import type { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { IMaskInput } from 'react-imask';
-import { userService } from '@/entities/user';
+import { userService } from '@/services/user.service';
 import { UiButton, UiForm } from '@/shared/components';
 import { ROUTES } from '@/shared/config';
 

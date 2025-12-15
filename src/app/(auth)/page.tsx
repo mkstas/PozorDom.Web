@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { Rubik_Wet_Paint } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { userService } from '@/services/user.service';
 import { LoginForm } from '@/features/login-form';
-import { userService } from '@/entities/user';
 import { cn, UiSheet } from '@/shared/components';
 import { ROUTES } from '@/shared/config';
 

@@ -1,8 +1,8 @@
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
+import { userService } from '@/services/user.service';
 import { NavBar } from '@/widgets/nav-bar';
-import { userService } from '@/entities/user';
 
 export default async function DashboardLayout({
   children,

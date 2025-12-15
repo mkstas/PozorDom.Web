@@ -1,6 +1,6 @@
 import { API_ROUTES } from '@/shared/config';
 
-export interface IUser {
+export interface IUserEntity {
   id: string;
   phoneNumber: string;
 }
