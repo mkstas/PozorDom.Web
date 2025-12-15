@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, FC } from 'react';
-import { cn } from '@/shared/ui/cn';
+import { cn } from '@/shared/components/cn';
 
 export const UiButton: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
   className,

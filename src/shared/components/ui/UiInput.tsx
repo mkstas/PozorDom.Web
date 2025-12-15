@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLProps } from 'react';
-import { cn } from '@/shared/ui/cn';
+import { cn } from '@/shared/components/cn';
 
 interface Props extends HTMLProps<HTMLInputElement> {
   className?: string;

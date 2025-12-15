@@ -1,3 +1,3 @@
 export default function ShedulePage() {
-  return <div>Shedule</div>;
+  return <div>Not implemented</div>;
 }

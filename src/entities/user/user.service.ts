@@ -25,7 +25,7 @@ export const userService = {
   },
 
   getMe: async (jwtCookie: string | undefined) => {
-    return await fetch(API_ROUTES.AUTH_ME, {
+    return await fetch(API_ROUTES.USER_ME, {
       method: 'GET',
       headers: {
         Cookie: `very-non-secret-cookie=${jwtCookie}`,
