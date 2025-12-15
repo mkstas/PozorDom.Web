@@ -1,6 +1,5 @@
 import { Rubik } from 'next/font/google';
 import type { ReactNode } from 'react';
-import { UserProvider } from '@/entities/user';
 import './main.css';
 
 const onest = Rubik({
@@ -15,7 +14,7 @@ export default function IndexLayout({
   return (
     <html lang='ru' className={onest.className}>
       <body className='min-h-screen bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white'>
-        <UserProvider>{children}</UserProvider>
+        {children}
       </body>
     </html>
   );

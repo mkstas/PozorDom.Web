@@ -1,5 +1,10 @@
 import { API_ROUTES } from '@/shared/config';
 
+export interface IUser {
+  id: string;
+  phoneNumber: string;
+}
+
 export const userService = {
   login: async (phoneNumber: string) => {
     return await fetch(API_ROUTES.LOGIN, {
@@ -19,12 +24,13 @@ export const userService = {
     });
   },
 
-  check: async (jwtCookie: string) => {
-    return await fetch(API_ROUTES.AUTH_CHECK, {
+  getMe: async (jwtCookie: string | undefined) => {
+    return await fetch(API_ROUTES.AUTH_ME, {
       method: 'GET',
       headers: {
         Cookie: `very-non-secret-cookie=${jwtCookie}`,
       },
+      credentials: 'include',
     });
   },
 };

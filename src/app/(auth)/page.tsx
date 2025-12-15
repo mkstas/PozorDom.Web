@@ -14,7 +14,8 @@ export default async function LoginPage() {
   const jwtCookie = (await cookies()).get('very-non-secret-cookie');
 
   if (jwtCookie) {
-    const res = await userService.check(jwtCookie.value);
+    const res = await userService.getMe(jwtCookie.value);
+    console.log(res);
     if (res.ok) redirect(ROUTES.HOME);
   }
 

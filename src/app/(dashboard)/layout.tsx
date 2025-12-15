@@ -10,14 +10,13 @@ export default async function DashboardLayout({
   children: ReactNode;
 }>) {
   const jwtCookie = (await cookies()).get('very-non-secret-cookie');
-  if (!jwtCookie) notFound();
+  const res = await userService.getMe(jwtCookie?.value);
 
-  const res = await userService.check(jwtCookie.value);
   if (res.status === 401) notFound();
 
   return (
     <>
-      {children}
+      <div className='p-3'>{children}</div>
       <NavBar />
     </>
   );

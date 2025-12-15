@@ -14,4 +14,5 @@ export const API_ROUTES = {
   LOGIN: `${API_PREFIX}/auth/login`,
   LOGOUT: `${API_PREFIX}/auth/logout`,
   AUTH_CHECK: `${API_PREFIX}/auth/check`,
+  AUTH_ME: `${API_PREFIX}/auth/me`,
 };
