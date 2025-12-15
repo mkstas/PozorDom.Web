@@ -37,10 +37,10 @@ export default async function LoginPage() {
         </div>
       </div>
       <UiSheet className='p-8'>
-        <h1 className='mb-2 text-center text-2xl font-bold text-white'>Добро пожаловать!</h1>
-        <p className='mb-6 text-center text-sm text-gray-400'>
+        <div className='mb-2 text-center text-2xl font-bold text-white'>Добро пожаловать!</div>
+        <div className='mb-6 text-center text-sm text-gray-400'>
           Введите ваш номер телефона для входа
-        </p>
+        </div>
         <LoginForm />
       </UiSheet>
       <div className='mx-auto max-w-sm text-center text-sm text-gray-400'>

@@ -58,9 +58,7 @@ export const LoginForm: FC<Props> = ({ className }) => {
               value={value}
               onAccept={value => onChange(value)}
             />
-            {error && (
-              <span className='mt-1 text-sm font-medium text-rose-500'>{error.message}</span>
-            )}
+            {error && <div className='mt-1 text-sm font-medium text-rose-500'>{error.message}</div>}
           </div>
         )}
       />
