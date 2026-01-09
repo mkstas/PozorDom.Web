@@ -15,12 +15,12 @@ import { UiSheet } from '@/shared/components';
 import { cn } from '@/shared/components/cn';
 import { ROUTES } from '@/shared/config';
 
-interface NavBarItemProps {
+interface MobileNavBarItemProps {
   href: string;
   icon: LucideIcon;
 }
 
-const NavBarItem: FC<NavBarItemProps> = ({ href, icon: Icon }) => {
+const MobileNavBarItem: FC<MobileNavBarItemProps> = ({ href, icon: Icon }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -37,20 +37,20 @@ const NavBarItem: FC<NavBarItemProps> = ({ href, icon: Icon }) => {
   );
 };
 
-export const NavBar: FC = () => {
+export const MobileNavBar: FC = () => {
   return (
-    <div className='fixed bottom-0 z-10 w-full p-3'>
+    <div className='fixed bottom-0 z-10 w-full p-3 md:hidden'>
       <UiSheet className='p-2'>
         <div className='flex items-center justify-around'>
-          <NavBarItem href={ROUTES.SHEDULE} icon={CalendarDaysIcon} />
-          <NavBarItem href={ROUTES.USER_DEVICES} icon={CableIcon} />
+          <MobileNavBarItem href={ROUTES.SHEDULE} icon={CalendarDaysIcon} />
+          <MobileNavBarItem href={ROUTES.USER_DEVICES} icon={CableIcon} />
           <Link href={ROUTES.HOME}>
             <div className='rounded-full border border-rose-500 bg-rose-500/10 p-2 shadow-xl backdrop-blur-xl'>
               <AccessibilityIcon className='size-5 text-rose-500' />
             </div>
           </Link>
-          <NavBarItem href={ROUTES.STORE} icon={StoreIcon} />
-          <NavBarItem href={ROUTES.ACCOUNT} icon={CircleUserIcon} />
+          <MobileNavBarItem href={ROUTES.STORE} icon={StoreIcon} />
+          <MobileNavBarItem href={ROUTES.ACCOUNT} icon={CircleUserIcon} />
         </div>
       </UiSheet>
     </div>

@@ -10,8 +10,9 @@ import {
   StoreIcon,
 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import type { FC } from 'react';
+import { userService } from '@/services/user.service';
 import { UiSheet } from '@/shared/components';
 import { cn } from '@/shared/components/cn';
 import { ROUTES } from '@/shared/config';
@@ -41,8 +42,13 @@ const VerticalNavBarItem: FC<VerticalNavBarProps> = ({ href, label, icon: Icon }
 };
 
 export const VerticalNavBar: FC = () => {
+  const onClickLogout = async () => {
+    await userService.logout();
+    redirect(ROUTES.LOGIN);
+  };
+
   return (
-    <div className='p-3'>
+    <div className='p-3 max-md:hidden'>
       <UiSheet className='flex h-full w-56 flex-col px-3 pt-3 pb-1'>
         <Link href={ROUTES.HOME} className='flex items-center space-x-4 pb-4'>
           <div className='rounded-full border border-rose-500 bg-rose-500/10 p-2 shadow-xl backdrop-blur-xl'>
@@ -56,7 +62,10 @@ export const VerticalNavBar: FC = () => {
           <VerticalNavBarItem href={ROUTES.STORE} label='Магазин' icon={StoreIcon} />
           <VerticalNavBarItem href={ROUTES.ACCOUNT} label='Аккаунт' icon={CircleUserIcon} />
         </div>
-        <button className='mt-auto flex cursor-pointer items-center gap-2 p-2 hover:text-amber-500'>
+        <button
+          onClick={onClickLogout}
+          className='mt-auto flex cursor-pointer items-center gap-2 p-2 hover:text-amber-500'
+        >
           <LogOutIcon className='size-5' />
           <div className='font-medium'>Выйти</div>
         </button>

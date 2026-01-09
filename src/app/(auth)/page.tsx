@@ -22,7 +22,7 @@ export default async function LoginPage() {
   const jwtCookie = (await cookies()).get('access_token');
 
   if (jwtCookie) {
-    const res = await userService.getMe(jwtCookie.value);
+    const res = await userService.validate(jwtCookie.value);
     if (res.ok) redirect(ROUTES.HOME);
   }
 

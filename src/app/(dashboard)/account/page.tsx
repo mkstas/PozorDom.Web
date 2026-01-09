@@ -1,26 +1,40 @@
-import { SettingsIcon, UserCircleIcon, UserPenIcon } from 'lucide-react';
-import { UiSheet } from '@/shared/components';
+import { UserCircleIcon } from 'lucide-react';
+import { cookies } from 'next/headers';
+import { type IUserEntity, userService } from '@/services/user.service';
+import { UserEmailForm } from '@/features/user-email-form';
+import { UserInfoForm } from '@/features/user-info-form';
+import { UserPhoneForm } from '@/features/user-phone-form/UserPhoneForm';
+import { UiAccordion, UiSheet } from '@/shared/components';
 
-export default function AccountPage() {
+function formatPhoneNumber(phone: string): string {
+  const clean = phone.replace(/\D/g, '').replace(/^8/, '7');
+  return `+7 (${clean.slice(1, 4)}) ${clean.slice(4, 7)}-${clean.slice(7, 9)}-${clean.slice(9, 11)}`;
+}
+
+export default async function AccountPage() {
+  const jwtCookie = (await cookies()).get('access_token');
+  const user: IUserEntity = await (await userService.getMe(jwtCookie?.value)).json();
+
   return (
-    <UiSheet className='px-3 py-16'>
-      <div className='mb-6 flex flex-col items-center'>
-        <div className='mb-4 rounded-full bg-gray-300/10 p-3'>
-          <UserCircleIcon className='size-12 stroke-1 text-gray-400' />
+    <UiSheet className='p-3'>
+      <div className='mb-8 flex items-center space-x-4'>
+        <div className='rounded-full bg-gray-300/10 p-2'>
+          <UserCircleIcon className='size-10 stroke-1 text-gray-400' />
         </div>
-        <div className='mb-1 text-lg font-semibold'>Имя пользователя</div>
-        <div className='text-gray-300'>+7 (900) 000-00-00</div>
-      </div>
-      <div className='flex justify-center gap-6'>
-        <div className='flex w-full max-w-28 flex-col items-center rounded-xl bg-gray-300/10 px-6 py-3'>
-          <UserPenIcon className='mb-1 size-5 text-gray-400' />
-          <div className='text-sm'>Данные</div>
-        </div>
-        <div className='flex w-full max-w-28 flex-col items-center rounded-xl bg-gray-300/10 px-6 py-3'>
-          <SettingsIcon className='mb-1 size-5 text-gray-400' />
-          <div className='text-sm'>Настройки</div>
+        <div>
+          <div>
+            <div className='text-lg font-semibold'>{user.fullName ?? ''}</div>
+            <div className='text-gray-300'>{formatPhoneNumber(user.phoneNumber)}</div>
+          </div>
         </div>
       </div>
+      <UiAccordion
+        items={[
+          { title: 'Номер телефона', content: <UserPhoneForm phoneNumber={user.phoneNumber} /> },
+          { title: 'Данные пользователя', content: <UserInfoForm fullName={user.fullName} /> },
+          { title: 'Электронная почта', content: <UserEmailForm email={user.email} /> },
+        ]}
+      />
     </UiSheet>
   );
 }
