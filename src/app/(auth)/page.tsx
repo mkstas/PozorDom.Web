@@ -19,7 +19,7 @@ const rubikWetPaint = Rubik_Wet_Paint({
 });
 
 export default async function LoginPage() {
-  const jwtCookie = (await cookies()).get('very-non-secret-cookie');
+  const jwtCookie = (await cookies()).get('access_token');
 
   if (jwtCookie) {
     const res = await userService.getMe(jwtCookie.value);

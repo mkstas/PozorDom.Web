@@ -28,7 +28,7 @@ export const userService = {
     return await fetch(API_ROUTES.USER_ME, {
       method: 'GET',
       headers: {
-        Cookie: `very-non-secret-cookie=${jwtCookie}`,
+        Cookie: `access_token=${jwtCookie}`,
       },
       credentials: 'include',
     });
