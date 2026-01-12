@@ -22,9 +22,6 @@ export const API_ROUTES = {
   USER_ME_INFO: `${API_PREFIX}/auth/me/info`,
   USER_ME_EMAIL: `${API_PREFIX}/auth/me/email`,
   USER_ME_IMAGE: `${API_PREFIX}/auth/me/image`,
-  // HUBS: `${API_PREFIX}/store/hubs/`,
-  // HUBS_SINGLE: (id: string) => `${API_PREFIX}/store/hubs/${id}`,
-  // DEVICE_TYPES: `${API_PREFIX}/store/device-types/`,
-  // DEVICES: `${API_PREFIX}/store/devices/`,
-  // DEVICES_SINGLE: (id: string) => `${API_PREFIX}/store/devices/${id}`,
+  DEVICES: `${API_PREFIX}/store/devices/`,
+  DEVICES_SINGLE: (id: string) => `${API_PREFIX}/store/devices/${id}`,
 };
